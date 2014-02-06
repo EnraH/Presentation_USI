@@ -1,0 +1,407 @@
+\documentclass[compress,notes=hide]{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{wasysym}
+
+
+%% Layout setting
+%\definecolor{ETHblue}{RGB}{51,89,148}           % #335994
+%\definecolor{ETHlightblue}{RGB}{114,129,192}    % for Department-Logo
+%\definecolor{ETHtitleblue}{RGB}{0,49,91}        % for title (#00315b)
+%\definecolor{ETHbrown}{RGB}{148,116,51}
+%\definecolor{ETHred}{RGB}{161,82,71}
+%\definecolor{ETHdarkgray}{rgb}{0.282,0.322,0.361}    % for box (#48525c)
+%--------------------
+\usetheme{Antibes}
+%\useinnertheme{rectangles}
+\usecolortheme{beaver}
+%\setbeamercolor{alerted text}{fg=red!75!green}
+\usefonttheme{professionalfonts}
+%\setbeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+\beamertemplatenavigationsymbolsempty
+
+\setbeamertemplate{bibliography item}{}
+
+\include{shortcuts}
+
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{arrows,shapes,petri,topaths,through}
+\tikzset{
+	q_sys/.style={
+		% shape
+		rectangle, minimum size=6mm, rounded corners=3mm,
+		% borders,filling and font
+		very thick, draw = red!50!black!50!,top color=white,bottom color= red!50!black!20, font = \sffamily
+		},
+	op/.style={
+		% shape
+		rectangle, minimum size=6mm, rounded corners=3mm,
+		% borders,filling and font
+		very thick, draw = green!50!black!50!,top color=white,bottom color= green!20!black!10, font = \sffamily
+		}
+	}
+
+\newtheorem*{bem}{Example}
+\renewcommand{\vec}[1]{{\bf#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Bound Entanglement}
+%\subtitle{}
+\author{Arne Hansen} %
+\institute{ETH Zurich}
+\date{02/2014}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+\tikzstyle{every picture}+=[remember picture]
+\everymath{\displaystyle}
+
+\begin{frame}
+        \titlepage        
+\end{frame}
+
+%\begin{frame}
+%	\tableofcontents
+%\end{frame}
+
+\section*{Intro}
+
+\begin{frame}
+\frametitle{Entanglement}
+%\framesubtitle{``intriguing'', ``astonishing'', ``one of the most striking features of QM'',\ldots}
+\begin{columns}
+\column{1.5in}
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=0.5]
+	\coordinate (rho) at (4.2,2);
+	%\coordinate (witness) at (5,-3);
+	\coordinate (sep) at (-.5,0);
+	\coordinate (dens) at (.5,4);
+	\coordinate (ppt) at (0,2);	
+	\filldraw[very thick,color=blue!70!black!90, fill=blue!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2.5) (4,-2) (5.5,1) (5,3) (2,5) (-1.5,3)};
+	% \filldraw[very thick,color=orange!80!black!90, fill=orange!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2) (3.5,-0.5) (2,3) (-1.2,2)};
+	\filldraw[very thick,color=red!80!black!90, fill=red!50!black!50!] plot[smooth cycle,tension=0.7] coordinates{(-1.5,-1) (1.0,-1.5) (0.8,1.2) (-1.2,1)};
+	\filldraw [black] (rho) circle [radius=.05]; 
+	\node [label=right:$\S$] (label) at (sep) {};
+	% \node [label=right:$\PPT$] (label) at (ppt) {};
+	\node [label=right:$\rho_{AB}$] (label) at (rho) {};
+	\node [label=right:$\mathcal{D}$] (label) at (dens) {};
+\end{tikzpicture}
+%\caption{The set of separable states $\S$ is contained in the set of PPT states $\PPT$. Any NPT state $\rho$ is therefore entangled.}
+\end{figure}
+\column{1.5in}
+\ldots peculiar, non-classical correlation arising from the tensor product structure in combined quantum systems
+\end{columns}
+% \visible<2>{
+% \begin{block}{Bound Entanglement}
+% 	non-distillable entanglement, associated with entangled PPT states
+% 	\\ \vspace{5pt}\hfill \scriptsize (neglect possible NPT BE states)
+% \end{block}}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Bound Entanglement}
+\begin{block}{Bound Entanglement}
+	non-distillable entanglement %, associated with entangled PPT states
+%	\\ \vspace{5pt}\hfill \scriptsize (neglect possible NPT BE states)
+\end{block}
+\vspace{10pt}
+\begin{description}
+\visible<2->{\item[Existence] Explicite example of a bound entangled state}
+\visible<3->{\item[Use] Why should we be concerned about bound entanglement?}
+\visible<4->{\item[Detection] How do we decide for a given state whether it is \visible<4>{bound} entangled?}
+\end{description}
+\end{frame}
+
+
+\section[Existence of BE]{Existence Bound Entanglement}
+
+\subsection{The PPT Criterion}
+
+\begin{frame}
+\frametitle{The PPT Criterion}
+\framesubtitle{(Peres Criterion)}
+\begin{columns}
+\column{1.5in}
+\visible<3->{\begin{figure}
+\centering
+\begin{tikzpicture}[scale=0.5]
+	\coordinate (rho) at (4.2,2);
+	%\coordinate (witness) at (5,-3);
+	\coordinate (sep) at (-.5,0);
+	\coordinate (dens) at (.5,4);
+	\coordinate (ppt) at (0,2);	
+	\filldraw[very thick,color=blue!70!black!90, fill=blue!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2.5) (4,-2) (5.5,1) (5,3) (2,5) (-1.5,3)};
+	\visible<4->{ \filldraw[very thick,color=orange!80!black!90, fill=orange!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2) (3.5,-0.5) (2,3) (-1.2,2)};}
+	\filldraw[very thick,color=red!80!black!90, fill=red!50!black!50!] plot[smooth cycle,tension=0.7] coordinates{(-1.5,-1) (1.0,-1.5) (0.8,1.2) (-1.2,1)};
+	\filldraw [black] (rho) circle [radius=.05]; 
+	\node [label=right:$\S$] (label) at (sep) {};
+	\visible<4->{\node [label=right:$\PPT$] (label) at (ppt) {};}
+	\node [label=right:$\rho_{AB}$] (label) at (rho) {};
+	\node [label=right:$\mathcal{D}$] (label) at (dens) {};
+\end{tikzpicture}
+%\caption{The set of separable states $\S$ is contained in the set of PPT states $\PPT$. Any NPT state $\rho$ is therefore entangled.}
+\end{figure}}
+\column{2.8in}
+
+% The partial transpose of a multi-partite system, i.e. the operator transposing a selection of the subsystems, serves as indicator of entanglement. The following definition refers to the bipartite case but generalizes easily to more parties.
+
+\only<1-4>{
+\begin{definition} 
+	The partial transpose of a density matrix $\rho\in \D{\HiS_A\ot\HiS_B}$ is defined as
+	\begin{equation}
+		\rho^{\G} := (\Id_A \ot T_B) \rho
+	\end{equation}
+\end{definition}
+
+\begin{block}{Matrix elements in the tensor basis}
+  In the product basis
+  \begin{IEEEeqnarray}{RL}
+    \left(\rho^{\G}\right)_{ikjl} &= \bra{i \otimes k} \ \rho^{\G} \ \ket{j \otimes l} \\
+    &= \bra{i \otimes l} \ \rho \ \ket{j \otimes k} = \rho_{iljk}
+  \end{IEEEeqnarray}
+\end{block}
+}
+
+\only<5-6>{\visible<5-6>{\begin{alertblock}{Entanglement criterion}
+  Any non-PPT(NPT) density matrix is entangled.
+\end{alertblock}}
+
+\visible<6>{\begin{block}{Group of Entanglement Tests}
+  Any Positive but not Completely Positive Map ('channel’) serves as a similar entanglement test.
+\end{block}}}
+
+\end{columns}
+\end{frame}
+\subsection{Introducing Bound Entanglement}
+\begin{frame}
+
+\frametitle{Example of a bound entangled state}
+
+
+\end{frame}
+
+
+\section[Applications]{Applications of BE}
+
+\begin{frame}
+\frametitle{Quantum Key Distribution}
+\framesubtitle{with bound entangled resources}
+\end{frame}
+
+\section[Detection]{Testing bound entanglement}
+
+\begin{frame}
+\frametitle{Deciding entanglement for PPT}
+\end{frame}
+
+
+\section[Quant Repeaters]{Notions of Quantum Repeaters}
+
+\begin{frame}
+	\tableofcontents[currentsection,subsectionstyle=show/show/hide,subsubsectionstyle=show/show/hide]
+\end{frame}
+
+\begin{frame}
+\frametitle{Endeavour: Extending entanglement}
+
+\only<1-2>{
+\begin{figure}
+\centering
+\begin{tikzpicture}[]
+	% nodes
+	\node (A) at (0,0) [q_sys]	{A};
+	\node (C) at (7,0) [q_sys]	{C};
+	% paths
+	%\y=1;
+	%\draw[very thick,color=orange!80!black!90] plot[smooth cycle,tension=0.95] coordinates{(2.5,1) (3.5,1.5) (4.5,1) (3.5,0.5)};
+	\alert<2>{\draw[thick] (A.east) -- (C.west);
+	\visible<2>{\node (noise) at (3.5,0.3) {noise};}}
+\end{tikzpicture}
+%\caption{Principles behind quantum repeaters}
+\end{figure}
+}
+
+\only<3->{
+\begin{figure}
+\centering
+\begin{tikzpicture}[]
+	% nodes
+	\foreach \x in {0,1}	{
+		\node (A_\x) at (0,\x) [q_sys]	{A};
+		\node (B_\x) at (3,\x) [q_sys]	{B} \ifnum \x > 0 
+														edge[thick] (A_\x) \fi;
+		\node (B_prime) at (4,\x) [q_sys]	{B'};
+		\node (C_\x) at (7,\x) [q_sys]	{C} \ifnum \x > 0 
+														edge[thick] (B_prime)\fi;
+	}
+	% paths
+	%\y=1;
+	%\draw[very thick,color=orange!80!black!90] plot[smooth cycle,tension=0.95] coordinates{(2.5,1) (3.5,1.5) (4.5,1) (3.5,0.5)};
+	\draw[thick] plot[smooth, tension=0.95] coordinates{(A_0.east) (3.5,-0.7) (C_0.west)};
+\end{tikzpicture}
+%\caption{Principles behind quantum repeaters}
+\end{figure}
+}
+\end{frame}
+
+\subsection{Swap Operation on States}
+%\subsection{The Grand Canonical Ensemble}
+
+
+
+\note{different perceptions of quantum repeaters --> theoretical approaches}
+
+\begin{frame}
+\frametitle{Swap Operator on States}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[]
+	% nodes
+	\only<-2>{\node (labelA) at (1.5,0.3) {$\rho_1$};
+	\node (labelB) at (5.5,0.3) {$\rho_2$};}
+	\node (A) at (0,0) [q_sys]	{A};
+	\node (B) at (3,0) [q_sys]	{B};
+	\node (B_prime) at (4,0) [q_sys] {B'};
+	\node (C) at (7,0) [q_sys]	{C};
+	\visible<1-2>{\draw[thick,color=black] (A.east) -- (B.west);
+		\draw[thick,color=black] (B_prime.east) -- (C.west); }
+	% paths
+	\visible<2>{\draw[very thick,color=orange!80!black!90] plot[smooth cycle,tension=0.95] coordinates{(2.5,0) (3.5,.5) (4.5,0) (3.5,-0.5)};}
+	\visible<3->{\draw[thick] plot[smooth, tension=0.95] coordinates{(A.east) (3.5,-0.7) (C.west)};}
+\end{tikzpicture}
+%\caption{Principles behind quantum repeaters}
+\end{figure}
+\visible<4->{
+\begin{block}{Swap operation}
+\[
+	\swap(\rho_A,\rho_B) = \oneo{N} \tr_{BB'}\left[ \ (\proj{\bell}_{BB'} \ot \id_{AC} ) \ (\rho_1 \ot \rho_2) \ \right]
+\]
+\end{block}}
+
+\end{frame}
+
+\subsection{Composition of Channels}
+
+\begin{frame}
+\frametitle{Composing Channels}
+\framesubtitle{corresponds to swapping CJ associated states}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\node (A1) at (-.2,0) [q_sys] {A};
+\node (A2) at (2,0) [q_sys] {A'};
+\visible<2->{\node (B) at (5,0) [q_sys] {B};}
+\visible<4->{\node (C) at (8,0) [q_sys] {C};}
+\draw[thick, dashed]  (A1) -- node[above] {$\proj{\bell}$} (A2) {};
+\visible<3->{\draw[thick,->]  (A2) -- node[above] {$\tau^{-1}(\rho_1)$} (B) {};}
+\visible<5->{\draw[thick,->]  (B) -- node[above] {$\tau^{-1}(\rho_2)$} (C) {};}
+\end{tikzpicture}
+%\caption{Alice prepares a Bell state system on $A\ot A'$ and sends one part to Bob who forwards this to Charlie.}
+\end{figure}
+\visible<6>{
+\begin{block}{Swap in terms of channels}
+	\[
+	\tau^{-1}(\swap(\rho_1,\rho_2)) = \tau^{-1}(\rho_2)\circ\tau^{-1}(\rho_1)
+	\]
+\end{block}
+(flipping systems or equivalently transposing channels if necessary, up to normalization)
+}
+
+\end{frame}
+
+\subsection{Hybrid Approach}
+
+\begin{frame}
+\frametitle{Hybrid approach}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\node (A) at (0,0) [q_sys] {A};
+\node (B) at (2,0) [q_sys] {B};
+\visible<2->{\node (C) at (5,0) [q_sys] {C};}
+\draw[thick, dashed]  (A) -- node[above] {$\rho_1$} (B) {};
+\visible<3->{\draw[thick,->]  (B) -- node[above] {$\tau^{-1}(\rho_2)$} (C) {};}
+\end{tikzpicture}
+%\caption{In the hybrid approach Bob sends his part of an entangled system he shares with Alice to Charlie.}
+\end{figure}
+\visible<4>{
+\begin{block}{Hybrid formulation}
+	\[\swap(\rho_1,\rho_2) = \left[\Id_A\ot\tau^{-1}(\rho_2)\right](\rho_1) = \left[\Id_C\ot\tau^{-1}(\rho_1)^T\right](\rho_2)\]
+\end{block}
+(flipping systems or equivalently transposing channels if necessary, up to normalization)}
+\end{frame}
+
+\section{Question}
+
+%\begin{frame}
+%	\tableofcontents[currentsection]
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Swapped Bound Entanglement}
+\framesubtitle{Entanglement of swapped states from BE resources?}
+
+\begin{block}{States: Image of the Swap operator}
+	\[ \swap: \text{BE states} \times \text{BE states} \to \alert{\S} \]
+	\centerline{OR}
+	\[ \swap(\text{BE states},\text{BE states}) \cap  \mathcal{D}\setminus\S\alert{\neq \emptyset}\]
+\end{block}
+
+\visible<2>{
+
+\begin{block}{Composed Channels}
+	If $\La_1: \D{A} \to \D{B}$ and $\La_2: \D{B} \to \D{C}$ are PPT channels\footnote{Defined by their image: $\La_{\G}(\mathcal{D})\subset \PPT$}, is $\alert{\La_2\circ\La_1}:\D{A} \to \D{C}$ \alert{separable}?
+\end{block}
+}
+\end{frame}
+
+\subsection{Motivation}
+
+\begin{frame}
+\frametitle{Why should we bother?}
+
+\begin{description}[<+->]
+\item[QKD] distribute secure keys over larger distances \cite{Sec_key_b_ent}
+\item[Channels] range of PPT channels \\ (image of PPT states under PPT channels)
+\item[States] preservation of bound entanglement under swapping
+\end{description}
+\end{frame}
+
+\section{Answers}
+
+\begin{frame}
+\frametitle{Answers}
+\pause
+\centerline{\large Well, \ldots	}
+
+%\par \par \par \pause
+%\flushright{\small (\ldots but is slightly more to say.)}
+
+\end{frame}
+
+
+
+\end{document}

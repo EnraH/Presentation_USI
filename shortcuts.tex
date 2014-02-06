@@ -1,0 +1,124 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+
+
+%------------ New Commands for the math environments
+\newcommand{\ergo}{\rightarrow \quad}
+\newcommand{\tergo}{$\quad \rightarrow \quad$}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+%\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\Cscr}{\mathscr{C}}
+\newcommand{\Fscr}{\mathscr{F}}
+\newcommand{\Kscr}{\mathscr{K}}
+\newcommand{\Gscr}{\mathscr{G}}
+\renewcommand{\Im}[1]{\text{Im}\left(#1\right)}
+\renewcommand{\Re}[1]{\text{Re}\left(#1\right)}
+\renewcommand{\^}[1]{\hat{#1}}
+\newcommand{\dirv}[1]{\^{\vec #1}}
+%\renewcommand{\exists}{\exists \phantom{-}}
+\renewcommand{\t}{\left( t \right)}
+\newcommand{\x}{\left( x \right)}
+\newcommand{\y}{\left( y \right)}
+\newcommand{\z}{\left( z \right)}
+\newcommand{\partiell}[1]{\frac{\partial}{\partial #1} \ }
+\newcommand{\partiellm}[2]{\frac{\partial^{#2}}{\partial {#1}^{#2}} \ }
+\newcommand{\ins}{\subset}
+\newcommand{\glatt}{$C^{\infty}$}
+\newcommand{\hol}{\ \text{holomorph}}
+\newcommand{\id}{\mathds{1}}
+\newcommand{\Id}{\mathcal{I}}
+\renewcommand{\dag}[1]{#1^{\dagger}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ot}{\otimes}
+\renewcommand{\c}{\text{const.}}
+
+\newcommand{\lb}{\nonumber \\}
+
+%------- physics notation
+\newcommand{\rGP}{\rho^{GP}_{N,a}}
+\newcommand{\ket}[1]{|#1 \rangle}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\braket}[2]{\langle#1|#2\rangle}
+\newcommand{\bk}[2]{\langle#1|#2\rangle}
+\newcommand{\ketbra}[2]{|#1 \rangle\langle #2|}
+\newcommand{\kb}[2]{|#1 \rangle\langle #2|}
+\newcommand{\proj}[1]{|#1\rangle\langle #1|}
+\newcommand{\dint}[1]{\mathrm{d}#1 \,}
+\renewcommand{\bell}{\Phi^+}
+\newcommand{\HiS}{\mathcal{H}}
+\newcommand{\D}[1]{\mathcal{D}(#1)}
+\renewcommand{\S}{\mathcal{S}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\SW}{\mathcal{SW}}
+\newcommand{\PPT}{\Gamma}
+
+% ------ Environments with Newtheorem
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{task}{Task}
+%\newtheorem{lemma}[thm]{Lemma}
+\newtheorem*{issue}{Issue}
+
+\theoremstyle{definition}
+%\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+% ------ New Operators
+
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Dim}{dim}
+\DeclareMathOperator{\pr}{Pr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\conv}{Conv}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\swap}{swap}
+\DeclareMathOperator{\herm}{Herm}
+\DeclareMathOperator{\cptpm}{CPTPM}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\StateToVec}{StateToVec}
+\DeclareMathOperator{\VecSwap}{VecSwap}
+\DeclareMathOperator{\VecTr}{VecTr}
+\DeclareMathOperator{\VecPT}{VecPT}
+\DeclareMathOperator{\symm}{Symm}
+
+% ------ griechische Buchstaben
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\newcommand{\zt}{\zeta}
+\renewcommand{\d}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\p}{\phi}
+\renewcommand{\b}{\beta}
+\renewcommand{\a}{\alpha}
+\renewcommand{\th}{\theta}
+\newcommand{\s}{\sigma}
+\newcommand{\e}{\epsilon}
+\newcommand{\La}{\Lambda}
+
+%\renewcommand\theparagraph{\textbf{paragraph}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\oneo}[1]{\frac{1}{#1}}
+\newcommand{\convS}{\stackrel{\S(\R^n)}{\longrightarrow}}
+
+%%%%%%
+% MISC
+%%%%%%
+
+\newcommand{\rev}[1]{\textbf{\textcolor{red}{!!! #1 !!!}}}
