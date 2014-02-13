@@ -132,7 +132,7 @@
 \end{frame}
 
 
-\section[Existence of BE]{Existence Bound Entanglement}
+\section[Existence of BE]{Existence of Bound Entanglement}
 
 \begin{frame}
 	\tableofcontents[currentsection,subsectionstyle=show/show/hide,subsubsectionstyle=show/show/hide]
@@ -190,7 +190,7 @@
 }
 }
 
-\only<4-7>{
+\only<4->{
 
 \begin{alertblock}{Entanglement criterion}
 
@@ -199,7 +199,7 @@
       \rho_{AB} \in \S \subset \HiS_A\ot\HiS_B \ \Rightarrow \ \alert<5>{\rho_{AB} \in \PPT}
     \end{equation}
   }
-   \only<6-7>{
+   \only<6->{
     \begin{equation}
       \rho_{AB} \notin \PPT \ \Rightarrow \ \rho_{AB} \ \text{is entangled}
     \end{equation}
@@ -209,14 +209,14 @@
 
 \end{alertblock}}
 
-\only<7>{
+\only<7->{
 \begin{block}{Accuracy}
   The criterion is accurate in $2 \otimes 2$ and $2\otimes 3$. But not in higher dimensions.\cite{3Horodecki96}
 \end{block}
 }
 
-\visible<8>{\begin{block}{Group of Entanglement Tests}
-  Any Positive but not Completely Positive Map ('channel’) serves as a similar entanglement test.
+\only<8>{\begin{block}{Group of Entanglement Tests}
+  Any Positive but not Completely Positive Map (`channel') serves as a similar entanglement test. \cite{3Horodecki96}
 \end{block}}
 
 \end{columns}
@@ -239,7 +239,7 @@
 
 \only<2>{$\rightarrow$ \ features of convex sets, Caratheodories Thm \cite{Carath}}
 
-\only<3>{
+\visible<3>{
   \begin{block}{The range of an operator}
     \begin{equation}
       \Ran \rho := \left\{ \ket{\psi} \in \HiS, \exists \ \ket{\phi} \in \HiS \ : \ \ket{\psi} = \rho \ket{\phi} \right\}
@@ -247,20 +247,25 @@
   \end{block}
 }
 
-\only<4>{
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Range Criterion \cite{HorodeckiP1997}}
+\only<1>{
 \begin{alertblock}{The range of separable density matrices}
   Any separable density matrix $\rho \in \S \subset \HiS_A \ot \HiS_B$ can be written as a convex combination of pure products states
   \begin{IEEEeqnarray}{RL}
-    \rho & = \sum_{i,j} p_{ij} \proj{\psi_i} \ot \proj{\phi_j} %\\
-      = \sum_{i,j} p_{ij} \proj{\psi_i \ot \phi_j} \nonumber \\
-    \rho^{\G} &= (\Id \ot T)\rho = \sum_{i,j} \proj{\psi_i} \ot \underbrace{\proj{\phi_j}^T}_{\proj{\phi_j^{\ast}}} \nonumber \\
-      &= \sum_{ij} p_{ij} \proj{\psi_i \ot \phi_j^{\ast}} \nonumber
+    \rho & = \sum_{i,j} p_{ij} \ \proj{\psi_i} \ot \proj{\phi_j} %\\
+      = \sum_{i,j} p_{ij} \ \proj{\psi_i \ot \phi_j} \nonumber \\
+    \rho^{\G} &= (\Id \ot T)\rho = \sum_{i,j} p_{ij} \ \proj{\psi_i} \ot \underbrace{\proj{\phi_j}^T}_{\proj{\phi_j^{\ast}}} \nonumber \\
+      &= \sum_{ij} p_{ij} \ \proj{\psi_i \ot \phi_j^{\ast}} \nonumber
   \end{IEEEeqnarray}
   and the set of product states $\left\{ \ket{\psi_i \ot \phi_j}\right\}_{ij}$ ( $\left\{ \ket{\psi_i \ot \phi_j^{\ast}}\right\}_{ij}$) span the range of $\rho$ ($\rho^{\G}$)
 \end{alertblock}
 }
 
-\only<5>{
+\only<2>{
   \begin{block}{Entanglement test}
   \begin{itemize}
     \item find product vectors that span the range of $\rho$
@@ -274,7 +279,7 @@
 \subsection{First BE state}
 
 \begin{frame}
-\frametitle{The first bound entangled state}
+\frametitle{The first PPT entangled state\cite{HorodeckiP1997}}
 
 {\only<2->{\tiny}
 \begin{equation*}
@@ -307,6 +312,7 @@
 \begin{frame}
 \frametitle{PPT and Distillability}
 
+\visible<1->{
 \begin{definition}
   A density matrix $\rho$ is called distillable if 
   \begin{IEEEeqnarray*}{RL}
@@ -314,42 +320,54 @@
     &\Lambda(\rho^{\ot n}) = \proj{\bell} \quad \text{for some large } n
   \end{IEEEeqnarray*}
 \end{definition}
+}
 
+\visible<2->{
 \begin{block}{Distillation of PPT states}
   Cannot distill qubits from PPT density matrices $\rho$ and $\rho^{\ot N}$
 \end{block}
+}
 
+\visible<3->{
 \begin{alertblock}{Non-distillable entanglement}
   Any PPT entangled state is not distillable.
 \end{alertblock}
-
+}
 \end{frame}
 
 \begin{frame}
 \frametitle{Distillation of PPT states}
 
+\only<1>{
+\begin{alertblock}{Claim}
+  PPT states are \alert{not} distillable.
+\end{alertblock}
+}
+
+\visible<2->{
 \begin{block}{Distilling $\rho^{\ot n}$}
   Assume $\rho$ is distillable:
   \begin{IEEEeqnarray*}{RL}
     \Lambda(\rho^{\ot n}) &= \oneo{M} \sum_i (A_i \ot B_i) \ \rho^{\ot n} \ (A_i^{\dagger} \ot B_i^{\dagger}) \quad \text{is entangled}\\
     & \Rightarrow \quad \exists \ \alert{i_0} \ \text{s.t.:} \ \underbrace{(A_{\alert{i_0}} \ot B_{\alert{i_0}}) \rho^{\ot n} (A_{\alert{i_0}}^{\dagger} \ot B_{\alert{i_0}}^{\dagger})}_{=:\rho_{\alert{i_0}}} \quad \text{is entangled}  
-    \only<2>{
+    \only<3>{
       \\ & A_{i_0} = \ket{0}\bra{\psi_A} + \ket{1}\bra{\phi_A} \quad B_{i_0} = \ket{0}\bra{\psi_B} + \ket{1}\bra{\phi_B} \\
         &P_A (P_B) := \ \text{projector onto} \ \langle\psi_A, \phi_A\rangle (\langle\psi_B, \phi_B\rangle)
     }
-    \only<3->{
-      \\ &\Rightarrow \quad \rho' := P_A \ot P_B \ \rho^{\ot n} \ P_A \ot P_B \quad \only<3>{\text{is entangled}} \only<4->{\text{is NPT}}
+    \visible<4->{
+      \\ &\Rightarrow \quad \rho' := P_A \ot P_B \ \rho^{\ot n} \ P_A \ot P_B \quad \only<4>{\text{is entangled}} \only<5->{\text{is NPT}}
     }
-    \only<5->{
+    \visible<6->{
       \\ &\Rightarrow \quad \exists \ \psi \ \text{s.t.:} \quad \bra{\psi}(\rho')^{\G_B}\ket{\psi} < 0
     }
-    \only<6->{
+    \visible<7->{
       \\ &\Rightarrow \quad \bra{\psi} \rho^{\G_B} \ket{\psi} < 0 
       \\ &\Rightarrow \quad \rho  \ \text{is NPT}
     }
     %\only<5>{\\ & \Rightarrow \quad \rho_{i_0} \quad \text{is NPT (PPT criterion is accurate in 2x2)} }
   \end{IEEEeqnarray*}
 \end{block}
+}
 
 % \only<2>{
 % \begin{block}{Kraus Operators}
@@ -368,10 +386,10 @@
 \frametitle{Bound entanglement}
 \framesubtitle{a first summary}
 
-\begin{description}[<+->]
-  \item[def] entanglement that cannot be distilled $\ \rightarrow \ $ not a sufficient resource for many quantum informational protocols
-  \item[construction] PPT entangled states (any PPT is not distillable)
-  \item[existence] only in higher dimensions (smallest BE systems in $3\ot 3$ and $4\ot 2$)
+\begin{description}
+  \item[def] entanglement that cannot be distilled \\ \pause $\ \rightarrow \ $ not a sufficient resource for many quantum informational protocols \pause
+  \item[construction] PPT entangled states (any PPT is not distillable) \pause
+  \item[existence] only in higher dimensions (smallest BE systems in $3\ot 3$ and $4\ot 2$) \pause
   \item[detection] need a stronger criterion than PPT, e.g. range criterion
 \end{description}
 
@@ -382,21 +400,68 @@
 \begin{frame}
 \frametitle{Quantum Key Distribution}
 \framesubtitle{with bound entangled resources}
+\only<1>{
+\begin{alertblock}{Secure key from BE}
+Bound entangled resources can be employed to distill secret key \cite{Sec_key_b_ent}.\footnote{For further details see \cite{gen_parad_key_distill}}
+\end{alertblock}
+}
+\only<2-4>{
+\begin{block}{Shielded System with an adversary}
+  \begin{equation}
+    \visible<4->{\proj{\psi} \in \mathcal{D}(}A \ot B \ot \underbrace{A'\ot B'}_{\text{shield}} \ot E \visible<4->{)}
+  \end{equation}
+  \visible<3->{
+  Assume: Eavesdropper Eve controles the whole environment (purification).
+  \end{block}
+  }
+  }
+\only<5-7>{
+\begin{block}{Security and Key}
+  
+  \visible<5>{After measuring in a product basis the systems $A, B$ and tracing out $A', B'$}
+  \begin{equation}
+    \only<5>{\rho_{ccq} = \sum_{ij} \ p_{ij} \ \proj{e_i \ot f_j} \ot \rho_{\alert{ij}}^E}
+    \only<6->{\rho_{ccq} = \sum_{ij} \ p_{ij} \ \proj{e_i \ot f_j} \ot \rho^E}
+  \end{equation}
+  \visible<7->{is \alert{secure} and \alert{has key} if $\left\{p_{ij}\right\}= \left\{\oneo{d}\delta_{ij}\right\}$
+}  
+\end{block}
+}
 
-Bound entangled resources can be employed to distill secret key \cite{Sec_key_b_ent}.
+\only<8->{
+\begin{block}{Private States}
+\begin{equation}
+  \gamma = \oneo{d} \sum_{ij} \ketbra{e_if_i}{e_jf_j}_{AB} \ot U_i \sigma_{A'B'} U_j^{\dagger}
+\end{equation}
+where $U_i$'s are arbitrary unitary transformations.
+\end{block}
+
+\visible<9->{
+\begin{alertblock}{Key of private states}
+  $\rho$ is a private state \ $\Leftrightarrow$ \ $\rho$ has key
+\end{alertblock}}
+\visible<10>{
+\begin{alertblock}{Private states and BE}
+  Private states can be approximated with BE states.
+\end{alertblock}
+}
+}
 
 \end{frame}
 
-\section[Detection]{Testing bound entanglement}
+\section[Detection]{Testing entanglement}
 
 \begin{frame}
-\frametitle{Deciding entanglement for PPT}
+\frametitle{Entanglement Tests}
 
 \begin{description}
   \item[PPT] all NPT states are entangled
-  \item[range criterion] compare the range of $\rho$ and $\rho^{\G}$
-  \item[extendibility] check extendibility of $\rho$
+    \\ $\rightarrow$ \ does not detect BE
+  \item[range] compare the range of $\rho$ and $\rho^{\G}$
+  \item[extendibility] check extendibility of $\rho$ \cite{paper:extensions} (Semi definite program)
 \end{description}
+
+Further: ranges for randomly drawn states (concentration of measure) \cite{RandomEnt} \cite{RandomPPT}
 
 \end{frame}
 
