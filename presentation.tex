@@ -25,7 +25,7 @@
 \usecolortheme{beaver}
 %\setbeamercolor{alerted text}{fg=red!75!green}
 \usefonttheme{professionalfonts}
-%\setbeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+\setbeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
 \beamertemplatenavigationsymbolsempty
 
 \setbeamertemplate{bibliography item}{}
@@ -90,7 +90,7 @@
 \begin{figure}
 \centering
 \begin{tikzpicture}[scale=0.5]
-	\coordinate (rho) at (4.2,2);
+	\coordinate (rho) at (3.6,2);
 	%\coordinate (witness) at (5,-3);
 	\coordinate (sep) at (-.5,0);
 	\coordinate (dens) at (.5,4);
@@ -134,6 +134,10 @@
 
 \section[Existence of BE]{Existence Bound Entanglement}
 
+\begin{frame}
+	\tableofcontents[currentsection,subsectionstyle=show/show/hide,subsubsectionstyle=show/show/hide]
+\end{frame}
+
 \subsection{The PPT Criterion}
 
 \begin{frame}
@@ -144,18 +148,21 @@
 \visible<3->{\begin{figure}
 \centering
 \begin{tikzpicture}[scale=0.5]
-	\coordinate (rho) at (4.2,2);
+	\coordinate (rho1) at (0.2,-0.9);
+	\coordinate (rho2) at (3.3,2);
 	%\coordinate (witness) at (5,-3);
 	\coordinate (sep) at (-.5,0);
 	\coordinate (dens) at (.5,4);
 	\coordinate (ppt) at (0,2);	
 	\filldraw[very thick,color=blue!70!black!90, fill=blue!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2.5) (4,-2) (5.5,1) (5,3) (2,5) (-1.5,3)};
-	\visible<4->{ \filldraw[very thick,color=orange!80!black!90, fill=orange!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2) (3.5,-0.5) (2,3) (-1.2,2)};}
+	\visible<5->{ \filldraw[very thick,color=orange!80!black!90, fill=orange!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2) (3.5,-0.5) (2,3) (-1.2,2)};}
 	\filldraw[very thick,color=red!80!black!90, fill=red!50!black!50!] plot[smooth cycle,tension=0.7] coordinates{(-1.5,-1) (1.0,-1.5) (0.8,1.2) (-1.2,1)};
-	\filldraw [black] (rho) circle [radius=.05]; 
+	\only<3-5>{\filldraw [black] (rho1) circle [radius=.05]; 
+	\node [label=right:$\rho_{AB}$] (label) at (rho1) {};}
+	\only<6->{\filldraw [black] (rho2) circle [radius=.05];
+	\node [label=right:$\rho_{AB}$] (label) at (rho2) {};}
 	\node [label=right:$\S$] (label) at (sep) {};
-	\visible<4->{\node [label=right:$\PPT$] (label) at (ppt) {};}
-	\node [label=right:$\rho_{AB}$] (label) at (rho) {};
+	\visible<5->{\node [label=right:$\PPT$] (label) at (ppt) {};}
 	\node [label=right:$\mathcal{D}$] (label) at (dens) {};
 \end{tikzpicture}
 %\caption{The set of separable states $\S$ is contained in the set of PPT states $\PPT$. Any NPT state $\rho$ is therefore entangled.}
@@ -164,53 +171,233 @@
 
 % The partial transpose of a multi-partite system, i.e. the operator transposing a selection of the subsystems, serves as indicator of entanglement. The following definition refers to the bipartite case but generalizes easily to more parties.
 
-\only<1-4>{
+\only<1-2>{
 \begin{definition} 
 	The partial transpose of a density matrix $\rho\in \D{\HiS_A\ot\HiS_B}$ is defined as
 	\begin{equation}
-		\rho^{\G} := (\Id_A \ot T_B) \rho
+    \rho^{\G} := (\Id_A \ot T_B) \rho
 	\end{equation}
 \end{definition}
 
-\begin{block}{Matrix elements in the tensor basis}
-  In the product basis
-  \begin{IEEEeqnarray}{RL}
-    \left(\rho^{\G}\right)_{ikjl} &= \bra{i \otimes k} \ \rho^{\G} \ \ket{j \otimes l} \\
-    &= \bra{i \otimes l} \ \rho \ \ket{j \otimes k} = \rho_{iljk}
-  \end{IEEEeqnarray}
+\visible<2>{
+  \begin{block}{Matrix elements in the tensor basis}
+    In the product basis
+    \begin{IEEEeqnarray}{RL}
+      \left(\rho^{\G}\right)_{ikjl} &= \bra{i \otimes k} \ \rho^{\G} \ \ket{j \otimes l} \\
+      &= \bra{i \otimes l} \ \rho \ \ket{j \otimes k} = \rho_{iljk}
+    \end{IEEEeqnarray}
+  \end{block}
+}
+}
+
+\only<4-7>{
+
+\begin{alertblock}{Entanglement criterion}
+
+  \only<4-5>{
+    \begin{equation}
+      \rho_{AB} \in \S \subset \HiS_A\ot\HiS_B \ \Rightarrow \ \alert<5>{\rho_{AB} \in \PPT}
+    \end{equation}
+  }
+   \only<6-7>{
+    \begin{equation}
+      \rho_{AB} \notin \PPT \ \Rightarrow \ \rho_{AB} \ \text{is entangled}
+    \end{equation}
+  }
+  
+  % Any non-PPT(NPT) density matrix is entangled.
+
+\end{alertblock}}
+
+\only<7>{
+\begin{block}{Accuracy}
+  The criterion is accurate in $2 \otimes 2$ and $2\otimes 3$. But not in higher dimensions.\cite{3Horodecki96}
 \end{block}
 }
 
-\only<5-6>{\visible<5-6>{\begin{alertblock}{Entanglement criterion}
-  Any non-PPT(NPT) density matrix is entangled.
-\end{alertblock}}
-
-\visible<6>{\begin{block}{Group of Entanglement Tests}
+\visible<8>{\begin{block}{Group of Entanglement Tests}
   Any Positive but not Completely Positive Map ('channel’) serves as a similar entanglement test.
-\end{block}}}
+\end{block}}
 
 \end{columns}
 \end{frame}
-\subsection{Introducing Bound Entanglement}
+\subsection{The range criterion}
+
 \begin{frame}
+\frametitle{The Range Criterion \cite{HorodeckiP1997}}
 
-\frametitle{Example of a bound entangled state}
+\only<1-3>{
+\begin{alertblock}{Decomposition of separable states}
+  \begin{IEEEeqnarray}{RL}
+    \forall \ \rho \in \S \ : & \nonumber \\
+    &\rho = \sum_{i = 1}^{n_A} \sum_{j=1}^{n_B} p_{ij} \ \proj{\phi_i} \ot \proj{\psi_j} \\
+    &\ket{\phi_i} \in \HiS_A , \ \ket{\psi_j} \in \HiS_B \nonumber \\
+    &n_a < \dim{\HiS_A}, \ n_B < \dim{\HiS_B} \nonumber 
+  \end{IEEEeqnarray}
+\end{alertblock}
+}
 
+\only<2>{$\rightarrow$ \ features of convex sets, Caratheodories Thm \cite{Carath}}
+
+\only<3>{
+  \begin{block}{The range of an operator}
+    \begin{equation}
+      \Ran \rho := \left\{ \ket{\psi} \in \HiS, \exists \ \ket{\phi} \in \HiS \ : \ \ket{\psi} = \rho \ket{\phi} \right\}
+    \end{equation}
+  \end{block}
+}
+
+\only<4>{
+\begin{alertblock}{The range of separable density matrices}
+  Any separable density matrix $\rho \in \S \subset \HiS_A \ot \HiS_B$ can be written as a convex combination of pure products states
+  \begin{IEEEeqnarray}{RL}
+    \rho & = \sum_{i,j} p_{ij} \proj{\psi_i} \ot \proj{\phi_j} %\\
+      = \sum_{i,j} p_{ij} \proj{\psi_i \ot \phi_j} \nonumber \\
+    \rho^{\G} &= (\Id \ot T)\rho = \sum_{i,j} \proj{\psi_i} \ot \underbrace{\proj{\phi_j}^T}_{\proj{\phi_j^{\ast}}} \nonumber \\
+      &= \sum_{ij} p_{ij} \proj{\psi_i \ot \phi_j^{\ast}} \nonumber
+  \end{IEEEeqnarray}
+  and the set of product states $\left\{ \ket{\psi_i \ot \phi_j}\right\}_{ij}$ ( $\left\{ \ket{\psi_i \ot \phi_j^{\ast}}\right\}_{ij}$) span the range of $\rho$ ($\rho^{\G}$)
+\end{alertblock}
+}
+
+\only<5>{
+  \begin{block}{Entanglement test}
+  \begin{itemize}
+    \item find product vectors that span the range of $\rho$
+    \item show that these vectors do \alert{not} span the range of $\rho^{\G}$
+  \end{itemize}
+  \end{block}
+}
 
 \end{frame}
 
+\subsection{First BE state}
+
+\begin{frame}
+\frametitle{The first bound entangled state}
+
+{\only<2->{\tiny}
+\begin{equation*}
+  \rho_a = \frac{1}{8a + 1} \ \begin{bmatrix} 
+    a & 0 & 0 & 0 & a & 0 & 0 & 0 & a \\
+    0 & a & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & a & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & a & 0 & 0 & 0 & 0 & 0 \\
+    a & 0 & 0 & 0 & a & 0 & 0 & 0 & a \\
+    0 & 0 & 0 & 0 & 0 & a & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & \frac{1+a}{2} & 0 & \frac{\sqrt{1-a^2}}{2} \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & a & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & \frac{\sqrt{1-a^2}}{2} & 0 & \frac{1+a}{2} 
+    \end{bmatrix}
+  \quad a \in (0,1)
+\end{equation*}
+}
+
+\visible<3->{
+\begin{block}{Properties of $\rho_a$}
+\begin{itemize}
+  \item PPT
+  \item $\rho_a$ and $\rho_a^{\G}$ violate the range criterion
+\end{itemize}
+\end{block}
+}
+\end{frame}
+
+\subsection{Distillable states}
+\begin{frame}
+\frametitle{PPT and Distillability}
+
+\begin{definition}
+  A density matrix $\rho$ is called distillable if 
+  \begin{IEEEeqnarray*}{RL}
+    \exists \ \text{LOCC} \quad &\Lambda: \D{(\HiS_A \ot \HiS_B)^{\ot n}} \to \D{\C^2} \quad \text{s.t.} : \\ 
+    &\Lambda(\rho^{\ot n}) = \proj{\bell} \quad \text{for some large } n
+  \end{IEEEeqnarray*}
+\end{definition}
+
+\begin{block}{Distillation of PPT states}
+  Cannot distill qubits from PPT density matrices $\rho$ and $\rho^{\ot N}$
+\end{block}
+
+\begin{alertblock}{Non-distillable entanglement}
+  Any PPT entangled state is not distillable.
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Distillation of PPT states}
+
+\begin{block}{Distilling $\rho^{\ot n}$}
+  Assume $\rho$ is distillable:
+  \begin{IEEEeqnarray*}{RL}
+    \Lambda(\rho^{\ot n}) &= \oneo{M} \sum_i (A_i \ot B_i) \ \rho^{\ot n} \ (A_i^{\dagger} \ot B_i^{\dagger}) \quad \text{is entangled}\\
+    & \Rightarrow \quad \exists \ \alert{i_0} \ \text{s.t.:} \ \underbrace{(A_{\alert{i_0}} \ot B_{\alert{i_0}}) \rho^{\ot n} (A_{\alert{i_0}}^{\dagger} \ot B_{\alert{i_0}}^{\dagger})}_{=:\rho_{\alert{i_0}}} \quad \text{is entangled}  
+    \only<2>{
+      \\ & A_{i_0} = \ket{0}\bra{\psi_A} + \ket{1}\bra{\phi_A} \quad B_{i_0} = \ket{0}\bra{\psi_B} + \ket{1}\bra{\phi_B} \\
+        &P_A (P_B) := \ \text{projector onto} \ \langle\psi_A, \phi_A\rangle (\langle\psi_B, \phi_B\rangle)
+    }
+    \only<3->{
+      \\ &\Rightarrow \quad \rho' := P_A \ot P_B \ \rho^{\ot n} \ P_A \ot P_B \quad \only<3>{\text{is entangled}} \only<4->{\text{is NPT}}
+    }
+    \only<5->{
+      \\ &\Rightarrow \quad \exists \ \psi \ \text{s.t.:} \quad \bra{\psi}(\rho')^{\G_B}\ket{\psi} < 0
+    }
+    \only<6->{
+      \\ &\Rightarrow \quad \bra{\psi} \rho^{\G_B} \ket{\psi} < 0 
+      \\ &\Rightarrow \quad \rho  \ \text{is NPT}
+    }
+    %\only<5>{\\ & \Rightarrow \quad \rho_{i_0} \quad \text{is NPT (PPT criterion is accurate in 2x2)} }
+  \end{IEEEeqnarray*}
+\end{block}
+
+% \only<2>{
+% \begin{block}{Kraus Operators}
+%   \begin{IEEEeqnarray*}{RL}
+%     A_{i_0} &= \ket{0}\bra{\psi_A} + \ket{1}\bra{\phi_A}\\
+%     B_{i_0} &= \ket{0}\bra{\psi_B} + \ket{1}\bra{\phi_B}
+%   \end{IEEEeqnarray*}
+% \end{block}
+% }
+
+\end{frame}
+
+\subsection{Summary}
+
+\begin{frame}
+\frametitle{Bound entanglement}
+\framesubtitle{a first summary}
+
+\begin{description}[<+->]
+  \item[def] entanglement that cannot be distilled $\ \rightarrow \ $ not a sufficient resource for many quantum informational protocols
+  \item[construction] PPT entangled states (any PPT is not distillable)
+  \item[existence] only in higher dimensions (smallest BE systems in $3\ot 3$ and $4\ot 2$)
+  \item[detection] need a stronger criterion than PPT, e.g. range criterion
+\end{description}
+
+\end{frame}
 
 \section[Applications]{Applications of BE}
 
 \begin{frame}
 \frametitle{Quantum Key Distribution}
 \framesubtitle{with bound entangled resources}
+
+Bound entangled resources can be employed to distill secret key \cite{Sec_key_b_ent}.
+
 \end{frame}
 
 \section[Detection]{Testing bound entanglement}
 
 \begin{frame}
 \frametitle{Deciding entanglement for PPT}
+
+\begin{description}
+  \item[PPT] all NPT states are entangled
+  \item[range criterion] compare the range of $\rho$ and $\rho^{\G}$
+  \item[extendibility] check extendibility of $\rho$
+\end{description}
+
 \end{frame}
 
 
@@ -378,30 +565,16 @@
 }
 \end{frame}
 
-\subsection{Motivation}
 
-\begin{frame}
-\frametitle{Why should we bother?}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Bibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{description}[<+->]
-\item[QKD] distribute secure keys over larger distances \cite{Sec_key_b_ent}
-\item[Channels] range of PPT channels \\ (image of PPT states under PPT channels)
-\item[States] preservation of bound entanglement under swapping
-\end{description}
-\end{frame}
+\begin{frame}[allowframebreaks]{Bibliography}
 
-\section{Answers}
-
-\begin{frame}
-\frametitle{Answers}
-\pause
-\centerline{\large Well, \ldots	}
-
-%\par \par \par \pause
-%\flushright{\small (\ldots but is slightly more to say.)}
+\bibliographystyle{alpha}
+\bibliography{myref.bib}
 
 \end{frame}
-
-
 
 \end{document}
