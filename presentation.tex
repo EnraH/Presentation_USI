@@ -479,7 +479,7 @@ Bound entangled resources can be employed to distill secret key \cite{Sec_key_b_
   \end{block}
   }
   }
-\only<5-7>{
+\only<5-8>{
 \begin{block}{Security and Key}
   
   \visible<5>{After measuring in a product basis the systems $A, B$ and tracing out $A', B'$}
@@ -487,12 +487,14 @@ Bound entangled resources can be employed to distill secret key \cite{Sec_key_b_
     \only<5>{\rho_{ccq} = \sum_{ij} \ p_{ij} \ \proj{e_i \ot f_j} \ot \rho_{\alert{ij}}^E}
     \only<6->{\rho_{ccq} = \sum_{ij} \ p_{ij} \ \proj{e_i \ot f_j} \ot \rho^E}
   \end{equation}
-  \visible<7->{is \alert{secure} and \alert{has key} if $\left\{p_{ij}\right\}= \left\{\oneo{d}\delta_{ij}\right\}$
+  \visible<7->{is \alert{secure}} 
+  \par
+  \visible<8>{\alert{has key} if $\left\{p_{ij}\right\}= \left\{\oneo{d}\delta_{ij}\right\}$
 }  
 \end{block}
 }
 
-\only<8->{
+\only<9->{
 \begin{block}{Private States}
 \begin{equation}
   \gamma = \oneo{d} \sum_{ij} \ketbra{e_if_i}{e_jf_j}_{AB} \ot U_i \sigma_{A'B'} U_j^{\dagger}
@@ -500,11 +502,11 @@ Bound entangled resources can be employed to distill secret key \cite{Sec_key_b_
 where $U_i$'s are arbitrary unitary transformations.
 \end{block}
 
-\visible<9->{
+\visible<10->{
 \begin{alertblock}{Key of private states}
-  $\rho$ is a private state \ $\Leftrightarrow$ \ $\rho$ has key
+  $\rho_{ABA'B'}$ is a private state \ $\Leftrightarrow$ \ $\rho_{ABE}$ has key
 \end{alertblock}}
-\visible<10>{
+\visible<11>{
 \begin{alertblock}{Private states and BE}
   Private states can be approximated with BE states.
 \end{alertblock}
@@ -523,6 +525,7 @@ where $U_i$'s are arbitrary unitary transformations.
     \\ $\rightarrow$ \ does not detect BE
   \item[range] compare the range of $\rho$ and $\rho^{\G}$
   \item[extendibility] check extendibility of $\rho$ \cite{paper:extensions} (Semi definite program)
+  \item[witnesses] hyperplanes separating the state from the convex set of separable states \cite{EntWitness_Terhal}
 \end{description}
 
 Further: ranges for randomly drawn states (concentration of measure) \cite{RandomEnt} \cite{RandomPPT}
