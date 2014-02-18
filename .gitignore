@@ -5,4 +5,7 @@
 *.log
 *.snm
 *.aux
+*.blg
 Literature/*
+
+*.swp
