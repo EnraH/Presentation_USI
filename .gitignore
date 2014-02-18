@@ -1,0 +1,8 @@
+*.out
+*.toc
+*.nav
+*.bbl
+*.log
+*.snm
+*.aux
+Literature/*
