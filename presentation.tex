@@ -294,10 +294,10 @@ $\rightarrow$ ``stronger'' than PPT criterion
 
 \end{frame}
 
-\subsection{First BE state}
+\subsection{First PPT entangled state}
 
 \begin{frame}
-\frametitle{Construction}
+\frametitle{Construction \cite{HorodeckiP1997}}
 \begin{columns}
 \column{1.5in}
 \visible<1->{\begin{figure}
@@ -312,11 +312,12 @@ $\rightarrow$ ``stronger'' than PPT criterion
 	\filldraw[very thick,color=blue!70!black!90, fill=blue!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2.5) (4,-2) (5.5,1) (5,3) (2,5) (-1.5,3)};
 	\filldraw[very thick,color=orange!80!black!90, fill=orange!50!black!50!] plot[smooth cycle,tension=0.6] coordinates{(-1.5,-1) (1.0,-2) (3.5,-0.5) (2,3) (-1.2,2)};
 	\filldraw[very thick,color=red!80!black!90, fill=red!50!black!50!] plot[smooth cycle,tension=0.7] coordinates{(-1.5,-1) (1.0,-1.5) (0.8,1.2) (-1.2,1)};
-	\filldraw [black] (rho1) circle [radius=.05]; 
-	\node [label=right:$\rho_2$] (label) at (rho2) {};
-	\filldraw [black] (rho2) circle [radius=.05];
-	\node [label=right:$\rho_1$] (label) at (rho1) {};
-	\node [label=right:$\S$] (label) at (sep) {};
+	\visible<3->{\filldraw [black] (rho2) circle [radius=.05]; 
+	\node [label=south:$\rho_2$] (label) at (rho2) {};}
+	\visible<2->{\filldraw [black] (rho1) circle [radius=.05];
+	\node [label=right:$\rho_1$] (label) at (rho1) {};}
+  \visible<4->{\draw[dotted,color=red] (rho1) -- (rho2);}
+	\node [label=left:$\S$] (label) at (sep) {};
 	\node [label=right:$\PPT$] (label) at (ppt) {};
 	\node [label=right:$\mathcal{D}$] (label) at (dens) {};
 \end{tikzpicture}
@@ -326,14 +327,14 @@ $\rightarrow$ ``stronger'' than PPT criterion
 
 \begin{block}{Components}
   \begin{IEEEeqnarray*}{RL}
-    \HiS =& \C^3 \ot \C^3, \ \left\{e_i\right\} \ \text{standard basis} \\
-    \only<1>{P_1 &:= I \ot I - \sum_i \proj{e_i} \ot \proj{e_i} \\
+    \only<1-2>{\HiS =& \C^3 \ot \C^3, \ \left\{e_i\right\} \ \text{standard basis}} \\
+    \only<2>{P_1 &:= I \ot I - \sum_i \proj{e_i} \ot \proj{e_i} \\
       &- \proj{e_3} \ot \proj{e_1}\\
     P_2 &:= \oneo{3} \proj{\sum_i e_i \ot e_i} \\
-    \rho_1 &:= \oneo{8} P_1 + \frac{3}{8} P_2  \\}
-    \only<2>{\Psi &:= e_3 \ot \left( \sqrt{\frac{1+a}{2}} e_1 + \sqrt{\frac{1-a}{2}} e_3\right) \\
+    \rho_1 &:= \oneo{8} P_1 + \frac{3}{8} P_2 \quad \text{NPT} \\}
+    \only<3>{\Psi &:= e_3 \ot \left( \sqrt{\frac{1+a}{2}} e_1 + \sqrt{\frac{1-a}{2}} e_3\right) \\
     \rho_2 &:= \proj{\Psi} \in \partial\S \\}
-    \only<3>{\rho_a = \frac{8a}{8a + 1} \rho_1 + \oneo{9a +1} \rho_2\\
+    \only<4>{\rho_a &:= \frac{8a}{8a + 1} \rho_1 + \oneo{9a +1} \rho_2\\
     }
   \end{IEEEeqnarray*}
 \end{block}
@@ -373,7 +374,7 @@ $\rightarrow$ ``stronger'' than PPT criterion
 
 \subsection{Distillable states}
 \begin{frame}
-\frametitle{PPT and Distillability}
+\frametitle{Partial Transpose and Distillability}
 
 \visible<1->{
 \begin{definition}
@@ -474,7 +475,7 @@ Bound entangled resources can be employed to distill secret key \cite{Sec_key_b_
     \visible<4->{\proj{\psi} \in \mathcal{D}(}A \ot B \ot \underbrace{A'\ot B'}_{\text{shield}} \ot E \visible<4->{)}
   \end{equation}
   \visible<3->{
-  Assume: Eavesdropper Eve controles the whole environment (purification).
+  Assume: Eavesdropper Eve controls the whole environment (purification).
   \end{block}
   }
   }
